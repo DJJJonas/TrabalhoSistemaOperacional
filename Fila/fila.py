@@ -14,11 +14,11 @@ class MyCircularQueue():
         self.queue[self.length] = element
         self.length += 1
 
-    def deleteElement(self):
+    def deleteFirstElement(self):
         if self.length == 0:
             print('fila circular vazia')
             return
-        self.queue[self.length - 1] = None
+        self.queue.remove(self.queue[0])
         self.length -= 1
 
     def __repr__(self) -> str:
@@ -37,3 +37,9 @@ for i in range(10):
 
 print("Fila inicial")
 print(obj)
+
+print("Apagando primeiro elemento da fila")
+obj.deleteFirstElement()
+print(obj)
+
+print("Tamanho da fila", obj.length)
