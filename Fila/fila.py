@@ -1,5 +1,8 @@
+import threading
+import random
 from typing import Any, List
 
+semaforo = threading.Semaphore(3)
 
 class MyCircularQueue():
     def __init__(self, maxlength: int):
@@ -30,16 +33,14 @@ class MyCircularQueue():
         return result
 
 
-obj = MyCircularQueue(10)
+obj = MyCircularQueue(11)
 
 for i in range(10):
-    obj.insertElement(i)
+    obj.insertElement(random.randint(1,100))
 
 print("Fila inicial")
 print(obj)
-
-print("Apagando primeiro elemento da fila")
 obj.deleteFirstElement()
-print(obj)
 
-print("Tamanho da fila", obj.length)
+obj.insertElement(random.randint(1,100))
+print(obj)
